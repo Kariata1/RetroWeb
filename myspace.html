@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MySpace.com</title>
+    <style>
+        /* General Styles */
+        body {
+            background-color: black;
+            color: pink;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://wallpapers.com/images/hd/pink-grunge-butterflies-and-stars-background-0dddhq87654z2zag.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            cursor: url('cursors/hnesw.cur'), pointer;
+        }
+        a {
+            color: hotpink;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Container */
+        .container {
+            width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 5px solid hotpink;
+            box-shadow: 0 0 20px hotpink;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 20px;
+            border-bottom: 2px solid pink;
+        }
+        .header img {
+            max-width: 100%;
+            border: 3px solid hotpink;
+        }
+
+               /* Profile Info */
+        .profile-info {
+            display: flex;
+            margin: 20px 0;
+            gap: 20px;
+        }
+        .profile-pic {
+            flex: 1;
+            width: 200px;
+            height: 200px;
+            background: url('https://i.pinimg.com/736x/16/1d/10/161d1096b4b025095f568b4a67468d9a.jpg') center/cover;
+            border: 3px solid pink;
+        }
+        .info {
+            flex: 2;
+        }
+        .info h1 {
+            font-size: 2.5em;
+            color: hotpink;
+            text-shadow: 2px 2px black;
+        }
+        .info p {
+            line-height: 1.8;
+        }
+
+    /* Profile Info */
+    .profile-info {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 10px; /* Space between columns */
+        margin: 20px 0;
+        border: 2px solid pink; /* Outer border for the section */
+    }
+    .profile-info > div {
+        padding: 10px;
+        border-right: 2px solid pink; 
+    }
+    .profile-info > div:last-child {
+        border-right: none; 
+    }
+    .profile-pic {
+        width: 100%;
+        aspect-ratio: 1 / 1; 
+        background: url('https://i.pinimg.com/736x/16/1d/10/161d1096b4b025095f568b4a67468d9a.jpg') center/cover;
+        border: 3px solid pink;
+    }
+    .info {
+        text-align: left;
+    }
+    .info h1 {
+        font-size: 2.5em;
+        color: hotpink;
+        text-shadow: 2px 2px black;
+    }
+    .info p {
+        line-height: 1.8;
+    }
+
+    /* Music Player */
+    .music-player {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    .music-player img {
+        width: 240px;
+        height: 300px;
+        border: 3px solid pink;
+        border-radius: 10px;
+    }
+    .music-player audio {
+        width: 100%;
+        border: 2px solid hotpink;
+        margin-top: 10px;
+    }
+    .music-caption img {
+        height: 155px;
+        margin-top: 10px;
+        border: 2px solid pink;
+        border-radius: 10px;
+    }
+    .music-caption p {
+        color: hotpink;
+    }
+
+    /* Sticker Panel */
+    .sticker-panel {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    .sticker-panel img {
+        width: 80px;
+        height: 80px;
+        border: 2px solid pink;
+        padding: 20px;
+        
+    }
+    .sticker-text {
+        font-size: 1.5em;
+        color: hotpink;
+        text-shadow: 2px 2px black;
+        padding: 20px;
+    }
+
+
+
+        /* Top Friends */
+        .top-friends {
+            margin: 20px 0;
+            padding: 20px;
+            background: black;
+            border: 2px solid pink;
+        }
+        .top-friends h2 {
+            color: hotpink;
+            text-shadow: 1px 1px black;
+            text-align: center;
+        }
+        .friends-list {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .friend {
+            width: 120px;
+            text-align: center;
+            margin: 10px 0;
+        }
+        .friend img {
+            width: 100%;
+            height: auto;
+            max-width: 100px;
+            border: 2px solid pink;
+            border-radius: 10px;
+        }
+        .friend p {
+            margin-top: 5px;
+            font-size: 0.9em;
+            color: hotpink;
+        }
+
+        /* Comments Section */
+        .comments {
+            margin: 20px 0;
+            padding: 20px;
+            background: black;
+            border: 2px solid pink;
+        }
+        .comments h2 {
+            color: hotpink;
+            text-shadow: 1px 1px black;
+        }
+        .comment {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid pink;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        .comment img {
+            width: 50px;
+            height: 50px;
+            border: 2px solid hotpink;
+            border-radius: 50%;
+        }
+        .comment-text {
+            flex: 1;
+        }
+        .comment-date {
+            font-size: 0.8em;
+            color: gray;
+            margin-top: 5px;
+        }
+        .fav{
+            margin: 20px 0;
+            padding: 20px;
+            border: 2px solid pink; 
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <img src="https://i.pinimg.com/736x/52/23/f5/5223f5da429a140ec552d3e19c3fd715.jpg" alt="Emo MySpace Banner">
+        </div>
+
+        <div class="profile-info">
+    <!-- Column 1: Profile -->
+    <div>
+        <div class="profile-pic"></div>
+        <div class="info">
+            <h1>⌞ Hawtie ⌝</h1>
+            <p>"Live fast, die young, and leave a beautiful corpse."</p>
+            <p>Location: New York</p>
+            <p>20 years old</p><br>
+            <p>Last Login:<br>8/22/2008 ✿</p>
+        </div>
+    </div>
+
+    <!-- Column 2: Music Player -->
+    <div>
+        <div class="music-player">
+            <img src="https://i.pinimg.com/originals/1b/bc/05/1bbc0575e72cf1af85ec47a73a573a57.gif" alt="Music Cover">
+            <audio controls autoplay>
+                <source src="Music/Peggy Gou - (It Goes Like) Nanana - Edit.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            <div class="music-caption">
+                <img class="responsive-img" src="https://i.pinimg.com/originals/c0/f0/41/c0f0412a5e1d915e8af56d6275df7790.gif" alt="Emo Playlist">
+                <p>"Dancing through the darkness"</p>
+                <a href="https://open.spotify.com/playlist/2PXrvUCkn3XfZ9GQmFahB7?si=0ffeb02ebf57461e"><p>Rawr Playlist Vol. 1</p></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Column 3: Sticker Panel -->
+    <div>
+        <div class="sticker-panel">
+            <span class="sticker-text">⟡₊ ⊹ Glitteryy ⋆.˚⟡ ࣪ </span>
+            <img src="https://img1.picmix.com/output/stamp/normal/2/4/8/8/1838842_a3747.gif" alt="Sticker 1">
+            <img src="https://img1.picmix.com/output/stamp/normal/6/6/9/7/2667966_28a73.gif" alt="Sticker 2">
+            <img src="https://i.pinimg.com/originals/c4/e2/f2/c4e2f2cfe32ff80ba728e57f7d82a5a9.gif" alt="Sticker 3">
+            <img src="https://img1.picmix.com/output/stamp/normal/5/5/6/3/2363655_51d05.gif" alt="Sticker 4">
+        </div>
+    </div>
+</div>
+    <div class="fav">
+<p>ヽ./づ~ 🍓"TOP SONGZZ!!! ── .✦:P</p>
+        <p>1. Peggy Gou - (It Goes Like) Nanana<br>
+            2. Nirvana - Smells Like Teen Spirite <br>
+            3. Radiohead - Black Star<br>
+            4. Pixies - Where Is My Mind?<br>
+            5. The Clash - Should I Stay or Should I Go<br>
+            6. The Doors - Riders on the Storm<br>
+        </p>
+    </div>
+    <div class="fav">
+<p><strong>mY WeBsItEeEeeE :33</strong><br>
+    <a href="Green_Retro_Portfolio.html"> www.nostalgaweb4ewi1.com</a><br><br>
+    <strong>My GeOcItiEs cc:</strong><br>
+    <a href="https://geocities.restorativland.org/Area51/Shadowlands/"> www.geocities.com</a><br><br>
+    <strong>MuZiX ;--(</strong><br>
+    <a href="http://web.archive.org/web/20071130063132/http://www.mp3.com/"> www.mp3.com</a><br><br> <!--http://web.archive.org/web/20010701000150/http://www.mp3.com/-->
+        </p>
+    </div>
+        <!-- Top Friends -->
+<div class="header">
+            <img src="https://i.ibb.co/h8XQ52j/e3edd35f502a58c3274c88bb53d765aa.png" alt="Emo MySpace Banner">
+        </div>
+        <div class="top-friends">
+            <h2>Top Friends</h2>
+            <div class="friends-list">
+                <div class="friend">
+                    <img src="https://i.pinimg.com/736x/c3/ae/52/c3ae52155f0a461ba68e88349d750e83.jpg" alt="Friend 1">
+                    <p>Skater Boi</p>
+                </div>
+                <div class="friend">
+                    <img src="https://i.pinimg.com/736x/53/f6/6f/53f66f61b0e9695bd2998363631741f9.jpg" alt="Friend 2">
+                    <p>Spicy</p>
+                </div>
+                <div class="friend">
+                    <img src="https://i.pinimg.com/736x/83/87/e1/8387e16b90e38544855b4aadce3539e4.jpg" alt="Friend 3">
+                    <p>Princess Jenna</p>
+                </div>
+                <div class="friend">
+                    <img src="https://i.pinimg.com/736x/1b/89/30/1b8930cb75c6f05148bf7c128abe7e9e.jpg" alt="Friend 4">
+                    <p>Goth slut</p>
+                </div>
+                <div class="friend">
+                    <img src="https://i.pinimg.com/736x/34/71/95/3471954bfa27b112633c5e864a4fd2e1.jpg" alt="Friend 5">
+                    <p>Jam3s</p>
+                </div>
+                <div class="friend">
+                    <img src="https://i.pinimg.com/736x/ab/b2/09/abb209cb226baec647483a91604e5f41.jpg" alt="Friend 6">
+                    <p>Pinkie</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comments Section -->
+        <div class="comments">
+            <h2>Comments</h2>
+            <div class="comment">
+                <img src="https://i.pinimg.com/originals/ac/c1/78/acc178dc932eaccdaf2396de1220189c.gif" alt="PFP">
+                <div class="comment-text">
+                    <p><strong>Skater Boi:</strong> This profile is such a VIIIBEEEEEE</p>
+                    <div class="comment-date">November 12, 2006</div>
+                </div>
+            </div>
+            <div class="comment">
+                <img src="https://i.pinimg.com/736x/0d/10/80/0d10807504994495d31ba2fc31afdbe4.jpg" alt="PFP">
+                <div class="comment-text">
+                    <p><strong>Florawix:</strong> You are such a bitch!>:((</p>
+                    <div class="comment-date">June 3, 2008</div>
+                </div>
+            </div>
+            <div class="comment">
+                <img src="https://i.pinimg.com/736x/ab/b2/09/abb209cb226baec647483a91604e5f41.jpg" alt="PFP">
+                <div class="comment-text">
+                    <p><strong>Pinkie:</strong> OMG, love the colors!!! .₊̣̇.ಇ/ᐠˬ ͜   ˬ ᐟ\∫.₊̣̇.</p>
+                    <div class="comment-date">June 3, 2008</div>
+                </div>
+            </div>
+            <div class="comment">
+                <img src="https://i.pinimg.com/736x/c6/72/56/c6725660c16d7c5f1002aa88e331acba.jpg" alt="PFP">
+                <div class="comment-text">
+                    <p><strong>IJ:</strong> Lets be fiendsss :33</p>
+                    <div class="comment-date">May 11, 2004</div>
+                </div>
+            </div>
+            <div class="comment">
+                <img src="https://i.pinimg.com/736x/64/ca/99/64ca996db1f9dc81c6811cbe6cde1d81.jpg" alt="PFP">
+                <div class="comment-text">
+                    <p><strong>DavideX12:</strong> HOT! HOT! HOT! xxx</p>
+                    <div class="comment-date">January 2, 2004</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

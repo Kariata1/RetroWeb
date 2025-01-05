@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>1995 Style Website</title>
+    <style>
+        body {
+            font-family: "Comic Sans MS", sans-serif;
+            background-color: #008081; /* Teal background */
+            color: #ffffff; /* White text color */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Fake 4:3 Ratio with Black Borders */
+        .outer-container {
+            background-color: lightgrey;
+            width: 1024px;
+            height: 768px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            border-color: grey;
+        }
+
+        /* Marquee with White Footer Background */
+        marquee {
+            background:  #0000ff; /* White background */
+            color:white; /* Blue text for marquee */
+            padding: 5px;
+            font-size: 18px;
+            margin: 0;
+            border-color: white;
+        }
+
+        /* Main Content Box */
+        .container {
+            flex-grow: 1;
+            margin: auto;
+            background-color: #ffffff; /* White background */
+            border: 3px solid #808080; /* Grey border for the main box */
+            width: 810px;
+            aspect-ratio: 4 / 3;
+            display: flex;
+            flex-direction: column;
+            padding: 25px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ff0000; /* Red header color */
+        }
+
+        /* Navigation Links */
+        .nav {
+            margin: 20px 0;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #0000ff; /* Blue links */
+            margin-right: 15px;
+            font-weight: bold;
+        }
+
+        .nav a:hover {
+            color: #ff0000; /* Red on hover */
+        }
+
+        /* Table Layout with Grey Borders Inside */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 10px;
+            border: 4px solid #808080; /* Grey border for inner boxes */
+        }
+
+        td h2 {
+            color: #000080; /* Dark blue sub-headings */
+        }
+
+        td p, td ul {
+            color: black; /* Black text */
+        }
+
+        td a {
+            color: #0000ff; /* Blue links */
+            text-decoration: none;
+        }
+
+        td a:hover {
+            color: #ff0000; /* Red links on hover */
+        }
+
+        /* Input Fields */
+        input[type="text"],
+        input[type="file"],
+        textarea {
+            width: 100%;
+            padding: 5px;
+            margin: 5px 0;
+            border: 4px solid #808080; /* Grey borders */
+            background-color: #ffffff; /* White background */
+            color: black; /* Black text */
+        }
+
+        /* Buttons */
+        .button {
+            background-color: #000080; /* Blue button */
+            padding: 5px 10px;
+            border: 2px solid #808080; /* Grey border */
+            color: white; /* White text */
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #3c3c3c; /* Darker shade on hover */
+        }
+
+        /* Footer Taskbar */
+        .footer {
+            background-color: #0000ff; /* Blue footer */
+            color: #ffffff; /* White text */
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 3px solid #808080; /* Grey border at the top */
+        }
+
+        .footer .start {
+            margin-left: 20px;
+        }
+
+        .footer .time {
+            margin-right: 20px;
+        }
+       /* .web{
+            background-color: white;
+            color: red;
+        }*/
+    </style>
+</head>
+<body>
+    <div class="outer-container">
+        <!-- Full-width marquee with white footer -->
+        <marquee>Welcome to My 1995 Website!</marquee>
+
+        <!-- Main content container -->
+        <div class="container">
+            
+            <h1>Welcome!</h1>
+            <!--<marquee class= "web">HAPPY NEW YEAR 1995!</marquee>-->
+            <div class="nav">
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+            </div>
+            <table>
+                <tr>
+                    <td width="70%">
+                        <h2>Welcome!💾</h2>
+                        <p>This is my little windows 95 website! You can post here some fun things :-))</p>
+                    </td>
+                    <td width="30%">
+                        <h2>Side Content</h2>
+                        <ul>
+                            <li><a href="#">Link 1</a></li>
+                            <li><a href="#">Link 2</a></li>
+                            <li><a href="#">Link 3</a></li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+            <div class="new-post">
+                <h2>Create a Post</h2>
+                <textarea placeholder="Write your post here..."></textarea>
+                <input type="text" placeholder="Enter title of the post">
+                <input type="file" accept="image/*">
+                <button class="button">Post</button>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="start">Start</div>
+            <div class="time" id="time"></div>
+        </div>
+    </div>
+
+    <script>
+        // Alert message for nostalgic touch
+        alert('Welcome to the 1995 style website! Enjoy your nostalgic trip.');
+
+        // Update time in the footer
+        function updateTime() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            document.getElementById('time').textContent = `${hours}:${minutes}:${seconds}`;
+        }
+
+        setInterval(updateTime, 1000); // Update every second
+        updateTime(); // Initialize time
+    </script>
+</body>
+</html>

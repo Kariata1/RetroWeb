@@ -1,0 +1,212 @@
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Get form data
+    $name = htmlspecialchars($_POST['name']);
+    $email = htmlspecialchars($_POST['email']);
+    $website = htmlspecialchars($_POST['website']);
+    $message = htmlspecialchars($_POST['message']);
+
+    // Email settings
+    $to = "11kariataa@gmail.com"; // Your email address
+    $subject = "New Website Request from $name";
+    $headers = "From: $email";
+
+    // Message content
+    $email_content = "Name: $name\n";
+    $email_content .= "Email: $email\n";
+    $email_content .= "Website URL: $website\n";
+    $email_content .= "Message: \n$message\n";
+
+    // Send email
+    if (mail($to, $subject, $email_content, $headers)) {
+        $success_message = "Thank you for your submission! We'll get back to you soon.";
+    } else {
+        $error_message = "Sorry, there was an error sending your request.";
+    }
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="icon.png" type="image/jpeg">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <title>Other Links - Retro Request</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #A9B77D;  
+            color: #333333; 
+            margin: 0;
+            padding: 0;
+            font-size: 12px; 
+            height: 100vh;
+            display: flex;
+            flex-direction: column; 
+            justify-content: flex-start; 
+            overflow-y: auto; 
+            cursor: url('cursors/3dgarro.cur'), pointer;
+        }
+
+        .container {
+            width: 80vw; 
+            height: calc(100vh - 120px); 
+            max-width: 1200px; 
+            max-height: 900px; 
+            overflow-y: auto; 
+            border: 0.1px solid #6D7F34; 
+            background-color: #F0F1D4; 
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            margin: auto;
+        }
+
+        header {
+            background-color: #4E5C34; 
+            color: #ffffff;
+            padding: 5px;
+            text-align: center;
+            border-bottom: 5px dashed #333333;
+            border-top: 5px dashed #333333;
+            position: sticky; 
+            top: 0;
+            z-index: 10; 
+        }
+
+        h1 {
+            font-size: 3em;
+            margin: 0;
+            text-shadow: 2px 2px 4px #000000;
+        }
+
+        .tagline {
+            font-size: 1.3em;
+            font-style: italic;
+            margin-top: 10px;
+        }
+
+        nav {
+            background-color: #7A8D51;
+            padding: 15px;
+            text-align: center;
+            border-bottom: 5px dashed #333333;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.2em;
+            margin: 0 20px;
+            padding: 5px 10px;
+            background-color: #4E5C34;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #A9B77D;
+            color: #000000;
+        }
+
+        .content {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        .mail-form {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .mail-form input, .mail-form textarea {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid #4E5C34;
+            border-radius: 3px;
+        }
+
+        .mail-form button {
+            background-color: #4E5C34;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .mail-form button:hover {
+            background-color: #A9B77D;
+        }
+
+        footer {
+            font-size: 13px;
+            background-color: #4E5C34;
+            color: white;
+            text-align: center;
+            border-top: 4px dashed #333333;
+            width: 100%;
+        }
+
+        footer a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            color: #A9B77D;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Retro Website Requests</h1>
+            <p class="tagline">Add Your Favorite Retro Sites!</p>
+        </header>
+        <marquee backgorund-color="white">🚨 Welcome to My Online World! Enjoy the nostalgia that I love! 🚨</marquee>
+
+        <nav>
+            <a href="Green_Retro_Portfolio.html">Home</a>
+            <a href="Mail_me.html">Requests</a>
+            <a href="About.html">About Me</a>
+        </nav>
+
+        <div class="content">
+            <h2>Submit Your Website Request</h2>
+            <p>If you'd like to add a website to the retro list, please submit your request below!</p>
+
+            <!-- Mail Form for submitting a website request -->
+            <div class="mail-form">
+              <?php if (isset($success_message)): ?>
+                <div style="color: green; font-weight: bold;"><?php echo $success_message; ?></div>
+              <?php endif; ?>
+              <?php if (isset($error_message)): ?>
+                <div style="color: red; font-weight: bold;"><?php echo $error_message; ?></div>
+              <?php endif; ?>
+
+              <form method="POST" action="">
+                <input type="text" name="name" placeholder="Your Name" required><br>
+                <input type="email" name="email" placeholder="Your Email" required><br>
+                <input type="url" name="website" placeholder="Website URL" required><br>
+                <textarea name="message" placeholder="Additional Information or Message" rows="4" required></textarea><br>
+                <button type="submit">Send Request</button>
+              </form>
+            </div>
+            <br><br><br>
+            <p>Incase I didnt replay to your message to 2 weeks send me diract message</p>
+            <p><strong>My mail:</strong>  11kariataa@gmail.com</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 1992-2012 Retro Website Requests. All rights reserved.</p>
+        <p><a href="#">Terms of Service</a> | <a href="#">Privacy Policy</a></p>
+    </footer>
+
+</body>
+</html>

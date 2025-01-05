@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AOL Instant Messengere</title>
+    <style>
+  body {
+            font-family: 'Verdana', sans-serif;
+            background-color: #A9B77D;  /* Olive Green */
+            margin: 0;
+            padding: 0;
+            color: #333333;  /* Dark Gray Text */
+        }
+        .window {
+            width: 400px;
+            height: 500px;
+            background-color: #F0F1D4;  /* Light Yellowish */
+            border: 2px solid #6D7F34;  /* Dark Olive Green */
+            margin: 50px auto;
+            box-shadow: 4px 4px rgba(0, 0, 0, 0.3);  /* Dark Shadow */
+        }
+        .title-bar {
+            background-color: #4E5C34;  /* Dark Olive Green */
+            color: white;
+            padding: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+        .title-bar button {
+            background-color: #F0F1D4;  /* Light Yellowish */
+            border: 1px solid #4E5C34;  /* Dark Olive Green */
+            width: 16px;
+            height: 16px;
+            text-align: center;
+            line-height: 14px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .chat-box {
+            width: 90%;
+            height: calc(100% - 260px); /* Adjust height based on available space */
+            margin: 10px auto;
+            padding: 5px;
+            border: 1px solid #4E5C34;  /* Dark Olive Green */
+            background-color: white;
+            overflow-y: auto; /* Allows for scrolling */
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            color: #000000;  /* Black text */
+        }
+        .input-area {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+        }
+        .input-area input {
+            width: 90%;
+            padding: 5px;
+            margin-bottom: 5px;
+            border: 1px solid #4E5C34;  /* Dark Olive Green */
+        }
+        .input-area button {
+            padding: 5px 20px;
+            border: 1px solid #4E5C34;  /* Dark Olive Green */
+            background-color: #4E5C34;  /* Dark Olive Green */
+            color: white;
+            cursor: pointer;
+        }
+        .buddy-list {
+            margin: 10px;
+            padding: 5px;
+            border: 1px solid #6D7F34;  /* Dark Olive Green */
+            background-color: #D0D97F;  /* Light Olive Yellow */
+            font-size: 12px;
+        }
+        .buddy {
+            margin: 5px 0;
+        }
+        .sign-in {
+            width: 300px;
+            margin: 100px auto;
+            padding: 20px;
+            background-color: #F0F1D4;  /* Light Yellowish */
+            border: 2px solid #6D7F34;  /* Dark Olive Green */
+            text-align: center;
+        }
+        .sign-in input {
+            width: 80%;
+            padding: 5px;
+            margin: 10px 0;
+            border: 1px solid #6D7F34;  /* Dark Olive Green */
+        }
+        .sign-in button {
+            padding: 5px 20px;
+            border: 1px solid #4E5C34;  /* Dark Olive Green */
+            background-color: #4E5C34;  /* Dark Olive Green */
+            color: white;
+            cursor: pointer;
+        }
+
+        .user-name {
+            font-weight: bolder;
+        }
+        .Jellybean {
+            color: red;
+        }
+        .SkaterX {
+            color: blue;
+        }
+        .Buzzkill {
+            color: green;
+        }
+        .GhostWhisper {
+            color: hotpink;
+        }
+        .timestamp {
+            font-size: smaller;
+            color: gray;
+        }
+        .user-name.default {
+            color: blue;
+        }
+
+              /* Sun Button */
+        .sun-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: transparent;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #FFF;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="sun-button" onclick="goToGreenPage()">⩤ </div> <!-- Sun button -->
+
+    <div class="sign-in" id="sign-in">
+        <h2>Sign In</h2>
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+        <button onclick="signIn()">Sign In</button>
+    </div>
+
+    <div class="window" id="chat-window" style="display: none;">
+        <div class="title-bar">
+            <span>AIM Chat</span>
+            <button onclick="signOut()">X</button>
+        </div>
+        <div class="buddy-list">
+            <strong>Buddy List</strong>
+            <div class="buddy">⁕ Buzzkill</div>
+            <div class="buddy">⁕ Jellybean</div>
+            <div class="buddy">⁕ GhostWhisper</div>
+            <div class="buddy">⁕ SkaterX</div>
+        </div>
+       <div class="chat-box" id="chat-box">
+        <div><span class="user-name Jellybean">Jellybean:</span> <span class="timestamp">(yesterday)</span> Guys I need to go, TTYL.</div>
+        <div><span class="user-name SkaterX">SkaterX:</span> <span class="timestamp">(08:53:02 PM)</span> OMG, I just watched the Dawson's Creek finale. :( I can't believe how it ended. I always thought Dawson and Joey were endgame!</div>
+        <div><span class="user-name Buzzkill">Buzzkill:</span> <span class="timestamp">(08:56:42 PM)</span> I know, right? I was team Pacey all the way! But I get why they had to give Joey the "closure" with Dawson. It just felt like the show had been leading to that moment for so long.</div>
+        <div><span class="user-name SkaterX">SkaterX:</span> <span class="timestamp">(09:00:19 PM)</span>  Ugh, I was SO mad when Joey went back to Dawson in the last season. Like, she and Pacey were so good together! They had real chemistry, not like Dawson and Joey’s "will they, won't they" thing.</div>
+        <div><span class="user-name Buzzkill">Buzzkill:</span> <span class="timestamp">(09:11:33 PM)</span>  I know, I agree. Pacey was always the better guy for Joey. But I get that Dawson was the "first love" and they had that deep history. But honestly, Pacey was the one who really grew and changed throughout the show.</div>
+        <div><span class="user-name GhostWhisper">GhostWhisper:</span> <span class="timestamp">(09:12:05 PM)</span> STOP TELLING ME ALL THIS STUFF! I haven't even seen the show yet! You're spoiling everything!</div>
+        <div><span class="user-name Buzzkill">Buzzkill:</span> <span class="timestamp">(09:15:00 PM)</span> (˘･_･˘) Oh no! Sorry, we got carried away!</div>
+        <div><span class="user-name Jellybean">Jellybean:</span> <span class="timestamp">(09:16:24 PM)</span> Wait, you’re all missing the point! It’s not even about who she ends up with—it’s about how they all grow. The real drama is watching them evolve as people. You’ve gotta love all the messy moments.</div>
+        <div><span class="user-name Jellybean">Jellybean:</span> <span class="timestamp">(09:16:59 PM)</span>(●'◡'●)</div>
+        </div>
+        <div class="input-area">
+            <input type="text" id="message" placeholder="Type your message...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+         <a href="Green_Retro_Portfolio.html"><button class="return-button" onclick="goBack()">Return</button></a>
+    </div>
+
+    <script>
+      let currentUsername = ''; // Variable to store the current user's name
+
+      function goToGreenPage() {
+          window.location.href = '2000_0_Chat.html'; // Redirect to the file 2000_0_Chat.html
+      }
+
+      function signIn() {
+          const username = document.getElementById('username').value;
+          const password = document.getElementById('password').value;
+
+          if (username.trim() !== '' && password.trim() !== '') {
+              currentUsername = username;  // Store the username
+              document.getElementById('sign-in').style.display = 'none';
+              document.getElementById('chat-window').style.display = 'block';
+          } else {
+              alert('Please enter a username and password!');
+          }
+      }
+
+      function signOut() {
+          document.getElementById('chat-window').style.display = 'none';
+          document.getElementById('sign-in').style.display = 'block';
+      }
+
+      function sendMessage() {
+          const messageBox = document.getElementById('message');
+          const chatBox = document.getElementById('chat-box');
+          const message = messageBox.value;
+
+          if (message.trim() !== '' && currentUsername !== '') {
+              // Create a div to display the message
+              const newMessage = document.createElement('div');
+              
+              // Add a CSS class based on the username (for color)
+              const userClass = currentUsername.trim() || 'default'; // Default class if no username
+              
+              // Set the innerHTML for the message with the username and message
+              newMessage.innerHTML = `<span class="user-name ${userClass}">${currentUsername}:</span> ${message}`;
+              
+              // Append the new message to the chat box
+              chatBox.appendChild(newMessage);
+              
+              // Scroll to the bottom of the chat box
+              chatBox.scrollTop = chatBox.scrollHeight;
+              
+              // Clear the input after sending the message
+              messageBox.value = ''; 
+          } else {
+              alert('Please enter a message!');
+          }
+      }
+    </script>
+</body>
+</html>
